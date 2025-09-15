@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Troll Generator 😏</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background: #f7f7f7; }
+    h1 { color: #333; }
+    button {
+      padding: 10px 20px; font-size: 18px; border: none;
+      border-radius: 12px; background: #ff4d4d; color: white;
+      cursor: pointer; margin: 10px; transition: 0.2s;
+    }
+    button:hover { background: #e63e3e; transform: scale(1.05); }
+    #qrcode { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🎲 QR Troll Generator 🎵</h1>
+  <button onclick="generateQR()">Tạo QR Ngẫu Nhiên</button>
+  <div id="qrcode"></div>
+
+  <script>
+    const links = [
+      "https://www.youtube.com/watch?v=6n3pFFPSlW4", 
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ", 
+      "https://www.youtube.com/watch?v=j5a0jTc9S10", 
+      "https://www.youtube.com/watch?v=9Deg7VrpHbM", 
+      "https://www.youtube.com/watch?v=ZZ5LpwO-An4"  
+    ];
+
+    function generateQR() {
+      const randomLink = links[Math.floor(Math.random() * links.length)];
+      document.getElementById('qrcode').innerHTML = "";
+      QRCode.toCanvas(randomLink, { width: 200 }, function (err, canvas) {
+        if (err) console.error(err);
+        document.getElementById('qrcode').appendChild(canvas);
+      });
+    }
+  </script>
+</body>
+</html>
+
